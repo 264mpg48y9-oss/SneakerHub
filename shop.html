@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoleVault - Shop</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+header{
+    background:#111;
+    color:white;
+    padding:15px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+}
+
+nav ul li{
+    margin-left:20px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+}
+
+nav ul li a:hover{
+    color:#ff4d4d;
+}
+
+.page-title{
+    text-align:center;
+    padding:40px 20px;
+}
+
+.filters{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+}
+
+.filters select,
+.filters input{
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius:5px;
+}
+
+.products{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:15px;
+}
+
+.card-content h3{
+    margin-bottom:10px;
+}
+
+.price{
+    color:#ff4d4d;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    border:none;
+    background:#111;
+    color:white;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+button:hover{
+    background:#333;
+}
+
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">SoleVault</div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="page-title">
+    <h1>Shop Sneakers</h1>
+    <p>Browse our latest collection</p>
+</section>
+
+<div class="filters">
+    <input type="text" placeholder="Search sneakers...">
+
+    <select>
+        <option>All Brands</option>
+        <option>Nike</option>
+        <option>Adidas</option>
+        <option>Puma</option>
+        <option>Jordan</option>
+    </select>
+
+    <select>
+        <option>Sort By</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Newest</option>
+    </select>
+</div>
+
+<section class="products">
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Nike Air Max">
+        <div class="card-content">
+            <h3>Nike Air Max</h3>
+            <p class="price">$120</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772" alt="Adidas">
+        <div class="card-content">
+            <h3>Adidas Ultraboost</h3>
+            <p class="price">$150</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5" alt="Jordan">
+        <div class="card-content">
+            <h3>Jordan Retro</h3>
+            <p class="price">$220</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519" alt="Puma">
+        <div class="card-content">
+            <h3>Puma RS-X</h3>
+            <p class="price">$110</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3" alt="Nike">
+        <div class="card-content">
+            <h3>Nike Dunk Low</h3>
+            <p class="price">$180</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2" alt="New Balance">
+        <div class="card-content">
+            <h3>New Balance 550</h3>
+            <p class="price">$140</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+
+</section>
+
+<footer>
+    <p>&copy; 2026 SoleVault. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
