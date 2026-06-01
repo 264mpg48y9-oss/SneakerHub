@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -12,33 +13,7 @@
     box-sizing:border-box;
     font-family:Arial, sans-serif;
 }
-<script>
-const sortSelect = document.getElementById("sortSelect");
-const productsContainer = document.getElementById("products");
 
-sortSelect.addEventListener("change", function () {
-
-    const products = Array.from(
-        productsContainer.querySelectorAll(".card")
-    );
-
-    if (this.value === "low-high") {
-        products.sort((a, b) =>
-            a.dataset.price - b.dataset.price
-        );
-    }
-
-    if (this.value === "high-low") {
-        products.sort((a, b) =>
-            b.dataset.price - a.dataset.price
-        );
-    }
-
-    products.forEach(product => {
-        productsContainer.appendChild(product);
-    });
-});
-</script>
 body{
     background:#f5f5f5;
 }
@@ -93,6 +68,7 @@ nav ul li a:hover{
     padding:10px;
     border:1px solid #ddd;
     border-radius:5px;
+    min-width:180px;
 }
 
 .products{
@@ -157,7 +133,20 @@ footer{
     padding:20px;
     margin-top:40px;
 }
+
+@media(max-width:768px){
+    header{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+}
 </style>
+
 </head>
 
 <body>
@@ -165,14 +154,17 @@ footer{
 <header>
     <div class="logo">SoleVault</div>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="cart.html">Cart</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+```
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+```
+
 </header>
 
 <section class="page-title">
@@ -181,86 +173,162 @@ footer{
 </section>
 
 <div class="filters">
-    <input type="text" placeholder="Search sneakers...">
 
-    <select>
-        <option>All Brands</option>
-        <option>Nike</option>
-        <option>Adidas</option>
-        <option>Puma</option>
-        <option>Jordan</option>
-    </select>
+```
+<input
+    type="text"
+    id="searchInput"
+    placeholder="Search sneakers..."
+>
 
-   
-    <select id="sortSelect">
+<select id="brandFilter">
+    <option value="all">All Brands</option>
+    <option value="nike">Nike</option>
+    <option value="adidas">Adidas</option>
+    <option value="puma">Puma</option>
+    <option value="jordan">Jordan</option>
+    <option value="new balance">New Balance</option>
+</select>
+
+<select id="sortSelect">
     <option value="">Sort By</option>
     <option value="low-high">Price: Low to High</option>
     <option value="high-low">Price: High to Low</option>
 </select>
+```
+
 </div>
 
+<section class="products" id="products">
 
-    <section class="products" id="products">
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Nike Air Max">
-        <div class="card-content">
-            <h3>Nike Air Max</h3>
-            <p class="price">$120</p>
-            <button>Add to Cart</button>
-        </div>
+```
+<div class="card" data-brand="nike" data-price="120">
+    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Nike Air Max">
+    <div class="card-content">
+        <h3>Nike Air Max</h3>
+        <p class="price">$120</p>
+        <button>Add to Cart</button>
     </div>
+</div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772" alt="Adidas">
-        <div class="card-content">
-            <h3>Adidas Ultraboost</h3>
-            <p class="price">$150</p>
-            <button>Add to Cart</button>
-        </div>
+<div class="card" data-brand="adidas" data-price="150">
+    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772" alt="Adidas Ultraboost">
+    <div class="card-content">
+        <h3>Adidas Ultraboost</h3>
+        <p class="price">$150</p>
+        <button>Add to Cart</button>
     </div>
+</div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5" alt="Jordan">
-        <div class="card-content">
-            <h3>Jordan Retro</h3>
-            <p class="price">$220</p>
-            <button>Add to Cart</button>
-        </div>
+<div class="card" data-brand="jordan" data-price="220">
+    <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5" alt="Jordan Retro">
+    <div class="card-content">
+        <h3>Jordan Retro</h3>
+        <p class="price">$220</p>
+        <button>Add to Cart</button>
     </div>
+</div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519" alt="Puma">
-        <div class="card-content">
-            <h3>Puma RS-X</h3>
-            <p class="price">$110</p>
-            <button>Add to Cart</button>
-        </div>
+<div class="card" data-brand="puma" data-price="110">
+    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519" alt="Puma RS-X">
+    <div class="card-content">
+        <h3>Puma RS-X</h3>
+        <p class="price">$110</p>
+        <button>Add to Cart</button>
     </div>
+</div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3" alt="Nike">
-        <div class="card-content">
-            <h3>Nike Dunk Low</h3>
-            <p class="price">$180</p>
-            <button>Add to Cart</button>
-        </div>
+<div class="card" data-brand="nike" data-price="180">
+    <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3" alt="Nike Dunk Low">
+    <div class="card-content">
+        <h3>Nike Dunk Low</h3>
+        <p class="price">$180</p>
+        <button>Add to Cart</button>
     </div>
+</div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2" alt="New Balance">
-        <div class="card-content">
-            <h3>New Balance 550</h3>
-            <p class="price">$140</p>
-            <button>Add to Cart</button>
-        </div>
+<div class="card" data-brand="new balance" data-price="140">
+    <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2" alt="New Balance 550">
+    <div class="card-content">
+        <h3>New Balance 550</h3>
+        <p class="price">$140</p>
+        <button>Add to Cart</button>
     </div>
+</div>
+```
 
 </section>
 
 <footer>
     <p>&copy; 2026 SoleVault. All Rights Reserved.</p>
 </footer>
+
+<script>
+const searchInput = document.getElementById("searchInput");
+const brandFilter = document.getElementById("brandFilter");
+const sortSelect = document.getElementById("sortSelect");
+const productsContainer = document.getElementById("products");
+
+function filterProducts() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const selectedBrand = brandFilter.value.toLowerCase();
+
+    document.querySelectorAll(".card").forEach(card => {
+
+        const productName = card.querySelector("h3")
+            .textContent.toLowerCase();
+
+        const brand = card.dataset.brand.toLowerCase();
+
+        const matchesSearch =
+            productName.includes(searchTerm);
+
+        const matchesBrand =
+            selectedBrand === "all" ||
+            brand === selectedBrand;
+
+        if(matchesSearch && matchesBrand){
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+function sortProducts() {
+
+    const cards = Array.from(
+        productsContainer.querySelectorAll(".card")
+    );
+
+    if(sortSelect.value === "low-high"){
+        cards.sort((a,b) =>
+            Number(a.dataset.price) -
+            Number(b.dataset.price)
+        );
+    }
+
+    if(sortSelect.value === "high-low"){
+        cards.sort((a,b) =>
+            Number(b.dataset.price) -
+            Number(a.dataset.price)
+        );
+    }
+
+    cards.forEach(card => {
+        productsContainer.appendChild(card);
+    });
+}
+
+searchInput.addEventListener("input", filterProducts);
+
+brandFilter.addEventListener("change", filterProducts);
+
+sortSelect.addEventListener("change", () => {
+    sortProducts();
+    filterProducts();
+});
+</script>
 
 </body>
 </html>
